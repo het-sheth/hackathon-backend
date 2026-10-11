@@ -2,8 +2,8 @@
 const visualControls=document.createElement('section');
 visualControls.className='visual-controls';
 visualControls.innerHTML=`<div class="kit-heading"><h3>CAMERA OVERLAY</h3><span>3D kit</span></div>
-<label for="kitPreset">Three-piece preset</label><select id="kitPreset"><option value="spatial">Spatial 3D kit</option><option value="reference">Top-down · reference layout</option></select>
-<button id="applyPreset" class="preset-apply">Apply preset</button><p id="presetStatus" role="status">Choose a preset to arrange all three instruments.</p>
+<label for="kitPreset">Four-piece preset</label><select id="kitPreset"><option value="spatial">Spatial 3D kit</option><option value="reference">Top-down · reference layout</option></select>
+<button id="applyPreset" class="preset-apply">Apply preset</button><p id="presetStatus" role="status">Choose a preset to arrange all four instruments.</p>
 <label class="visual-switch"><input id="showDrums" type="checkbox" checked> Show 3D drums</label>
 <label for="drumSize">Drum size <output id="sizeValue">110 px</output></label><input id="drumSize" type="range" min="70" max="170" value="110">
 <label for="drumAngle">Viewing angle <output id="angleValue">45°</output></label><input id="drumAngle" type="range" min="0" max="65" value="45">
@@ -35,7 +35,7 @@ let presetView='reference';
 try{if(localStorage.getItem('air-drum-preset')==='spatial')presetView='spatial'}catch{}
 function setPresetView(value){presetView=value;$('zones').classList.toggle('spatial-kit',value==='spatial');$('kitPreset').value=value;try{localStorage.setItem('air-drum-preset',value)}catch{}}
 setPresetView(presetView);
-const spatialPositions={'mid-tom':[.50,.65],crash:[.75,.30],'hi-hat':[.23,.44]};
+const spatialPositions={snare:[.36,.70],'mid-tom':[.65,.65],crash:[.75,.30],'hi-hat':[.23,.44]};
 function applyPreset(){
  if(mode!=='arrange')return;
  setPresetView($('kitPreset').value);$('showDrums').checked=true;
